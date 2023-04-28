@@ -7,7 +7,7 @@ const Story = require('../models/Story')
 // @desc    Show add page
 // @route   GET /stories/add 
 router.get('/add', ensureAuth, (req, res) => {
-    res.render('stories/add')
+    res.render('stories/add', { hideAddButton: true });
 }) 
 
 // @desc    Process add form
@@ -80,6 +80,7 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
         } else{
             res.render('stories/edit', {
                 story,
+                hideAddButton: true,
             })
         }
     } catch (err) {
